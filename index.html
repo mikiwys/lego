@@ -2,13 +2,13 @@
 <html>
 	<head>
 		<title>lego.wojtka</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<div class="container">
-			<h1>Nasze zestawy</h1>
 			<div class="row">
 				<div id="data"></div>
 			</div>
@@ -36,14 +36,21 @@
 			dataType:"text",
 			success:function(data) {
 				var collection = toObject(data.split(/\r?\n|\r/));
-				var table_data = '<table class="table table-bordered table-striped">';
+				var table_data = '<table class="table table-borderless" style="border-spacing:0 20px; border-collapse: separate;">';
 				collection.forEach(function(element) {
 					console.log(element);
-					table_data += '<tr>';
-					table_data += '<td>' + element.Number + '</td>';
-					table_data += '<td>' + element.Theme + ' - ' + element.Subtheme + ' - ' + element.Name + '</td>';
-					table_data += '<td><img style=\"height: 200px\" src=\"' + element.ImageURL + '\"\></td>';
-					table_data += '</tr>';
+					table_data += '<tr class="bg-light"><td>';
+					table_data += '<p class="h1 btn btn-primary">' + element.Number + '</p>';
+					table_data += '<p class="h4 bg-info">' + element.Theme + '</p>'
+					table_data += '<p class="h5 bg-info">' + element.Subtheme + '</p>'
+					table_data += '<p class="h4 bg-success">' + element.Name + '</p>';
+					table_data += '<p class="h5 bg-warning">[' + element.Year + ']</p>';
+					table_data += '</td><td>';
+					table_data += '<img style="max-height: 200px; max-width: 400px;" src="' + element.ImageURL + '"\>';
+					table_data += '</td><td>';
+					var boxImg = 'https://images.brickset.com/sets/AdditionalImages/' + element.Number + '-1/' + element.Number + '_alt1.jpg'
+					table_data += '<img style="max-height: 200px; max-width: 400px;" src="' + boxImg + '"\>';
+					table_data += '</td></tr>';
 				});
 				table_data += '</table>';
 				$('#data').html(table_data);
