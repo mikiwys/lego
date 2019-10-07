@@ -1,3 +1,26 @@
 SetID,Number,Variant,Theme,Subtheme,Year,Name,Minifigs,Pieces,UKPrice,USPrice,CAPrice,EUPrice,ImageURL,OwnedBy,WantedBy,Owned,Wanted,QtyOwned,Rating
-27427,"70638","1","Ninjago","Sons of Garmadon","2018","Katana V11",2,257,14.99,19.99,24.99,19.99,"https://images.brickset.com/sets/images/70638-1.jpg",1610,353,"Yes","No",1,1
-28362,"76134","1","Marvel Super Heroes","Spider-Man","2019","Spider-Man: Doc Ock Diamond Heist",3,150,24.99,29.99,39.99,29.99,"https://images.brickset.com/sets/images/76134-1.jpg",476,526,"Yes","No",1,2
+27456,"10403","1","Classic","Building Bigger Thinking","2018","World Fun",2,295,14.99,19.99,24.99,19.99,"https://images.brickset.com/sets/images/10403-1.jpg",1612,359,"Yes","No",1,
+26556,"10703","1","Classic","","2017","Creative Builder Box",,502,19.99,,,24.99,"https://images.brickset.com/sets/images/10703-1.jpg",1452,398,"Yes","No",1,
+27664,"10712","1","Classic","","2018","Bricks and Gears",,244,17.99,19.99,24.99,19.99,"https://images.brickset.com/sets/images/10712-1.jpg",1069,230,"Yes","No",1,
+27665,"10713","1","Classic","","2018","Creative Suitcase",,213,17.99,19.99,24.99,19.99,"https://images.brickset.com/sets/images/10713-1.jpg",706,177,"Yes","No",1,
+27667,"10715","1","Classic","","2018","Bricks on a Roll",,442,19.99,,,24.99,"https://images.brickset.com/sets/images/10715-1.jpg",1432,243,"Yes","No",1,
+26765,"10731","1","Juniors","Cars 3","2017","Cruz Ramirez Race Simulator",1,59,7.99,9.99,12.99,9.99,"https://images.brickset.com/sets/images/10731-1.jpg",1193,176,"Yes","No",1,
+27629,"10750","1","Juniors","City","2018","Road Repair Truck",1,73,8.99,9.99,12.99,9.99,"https://images.brickset.com/sets/images/10750-1.jpg",1038,268,"Yes","No",1,
+27837,"30532","1","Ninjago","Sons of Garmadon","2018","Turbo",1,61,3.99,,,3.49,"https://images.brickset.com/sets/images/30532-1.jpg",1178,266,"Yes","No",1,
+27467,"31074","1","Creator","","2018","Rocket Rally Car",,241,17.99,19.99,24.99,19.99,"https://images.brickset.com/sets/images/31074-1.jpg",1181,381,"Yes","No",1,
+28427,"31087","1","Creator","","2019","Dune Buggy",,147,12.99,12.99,17.99,12.99,"https://images.brickset.com/sets/images/31087-1.jpg",521,254,"Yes","No",1,
+28485,"41361","1","Friends","","2019","Mia's Foal Stable ",1,118,14.99,19.99,24.99,19.99,"https://images.brickset.com/sets/images/41361-1.jpg",245,160,"Yes","No",1,
+29070,"41362","1","Friends","","2019","Heartlake City Supermarket",2,140,24.99,29.99,39.99,29.99,"https://images.brickset.com/sets/images/41362-1.jpg",61,213,"Yes","No",1,5
+27523,"60180","1","City","Great Vehicles","2018","Monster Truck",1,192,14.99,19.99,24.99,19.99,"https://images.brickset.com/sets/images/60180-1.jpg",3114,657,"Yes","No",1,
+29040,"60225","1","City","Space","2019","Rover Testing Drive",2,202,17.99,29.99,39.99,19.99,"https://images.brickset.com/sets/images/60225-1.jpg",869,1241,"Yes","No",1,
+27427,"70638","1","Ninjago","Sons of Garmadon","2018","Katana V11",2,257,14.99,19.99,24.99,19.99,"https://images.brickset.com/sets/images/70638-1.jpg",1610,353,"Yes","No",1,
+27428,"70639","1","Ninjago","Sons of Garmadon","2018","Street Race of Snake Jaguar",2,308,24.99,29.99,39.99,29.99,"https://images.brickset.com/sets/images/70639-1.jpg",1350,382,"Yes","No",1,
+27778,"70650","1","Ninjago","Hunted","2018","Destiny's Wing",2,181,17.99,19.99,24.99,19.99,"https://images.brickset.com/sets/images/70650-1.jpg",1108,367,"Yes","No",1,
+29259,"70683","1","Ninjago","Spinjitzu Slam","2019","Spinjitzu Slam - Zane",1,63,8.99,9.99,13.99,9.99,"https://images.brickset.com/sets/images/70683-1.jpg",185,214,"Yes","No",1,
+28451,"70821","1","The Lego Movie 2: The Second Part","","2019","Emmet and Benny's 'Build and Fix' Workshop!",2,117,17.99,19.99,24.99,19.99,"https://images.brickset.com/sets/images/70821-1.jpg",1943,688,"Yes","No",1,
+28445,"70841","1","The Lego Movie 2: The Second Part","","2019","Benny's Space Squad",5,68,8.99,9.99,13.99,9.99,"https://images.brickset.com/sets/images/70841-1.jpg",9336,1271,"Yes","No",1,
+22957,"75036","1","Star Wars","Episode III","2014","Utapau Troopers",4,83,11.99,12.99,15.99,11.89,"https://images.brickset.com/sets/images/75036-1.jpg",8542,2402,"Yes","No",1,
+23794,"75074","1","Star Wars","MicroFighters","2015","Snowspeeder",1,97,8.99,9.99,12.99,9.99,"https://images.brickset.com/sets/images/75074-1.jpg",11149,1567,"Yes","No",1,
+28469,"75890","1","Speed Champions","Ferrari","2019","Ferrari F40 Competizione",1,198,12.99,14.99,19.99,14.99,"https://images.brickset.com/sets/images/75890-1.jpg",3655,1085,"Yes","No",1,
+28340,"76113","1","Marvel Super Heroes","Spider-Man","2019","Spider-Man Bike Rescue",3,235,19.99,19.99,24.99,24.99,"https://images.brickset.com/sets/images/76113-1.jpg",1598,973,"Yes","No",1,
+28362,"76134","1","Marvel Super Heroes","Spider-Man","2019","Spider-Man: Doc Ock Diamond Heist",3,150,24.99,29.99,39.99,29.99,"https://images.brickset.com/sets/images/76134-1.jpg",476,526,"Yes","No",1,
