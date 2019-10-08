@@ -4,8 +4,8 @@
 		<title>lego.wojtka</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -13,48 +13,58 @@
 				<div id="data"></div>
 			</div>
 		</div>
+		<script>
+			$(document).ready(function(){
+				function toObject(arr) {
+					var jsonObj = [];
+					var headers = arr[0].split(',');
+					for (var i = 1; i < arr.length; i++) {
+						if (arr[i] === '') {
+							continue;
+						}
+						var data = arr[i].split(',');
+						var obj = {};
+						for (var j = 0; j < data.length; j++) {
+							obj[headers[j].trim()] = data[j].trim().split('"').join('');
+						}
+						jsonObj.push(obj);
+					}
+					return jsonObj
+				}
+				function createP(text, sizeClass, style) {
+					if (text === '') { return ''; }
+					return '<p class="btn btn-' + style + '" style="margin: 0 5px 5px 0"><span class="' + sizeClass + '">' + text + '</span></p>';
+				}
+				function createImg(imageUrl) {
+					return '<img style="max-height: 200px; max-width: 400px;" src="' + imageUrl + '"\>';
+				}
+				$.ajax({
+					url:"https://mikiwys.github.io/lego.wojtka/ownedby-mikiwys.csv",
+					dataType:"text",
+					success:function(data) {
+						var collection = toObject(data.split(/\r?\n|\r/));
+						var table_data = '<table class="table table-borderless" style="border-spacing:0 20px; border-collapse: separate;">';
+						collection.forEach(function(element) {
+							console.log(element);
+							table_data += '<tr class="bg-light"><td>';
+							table_data += createP(element.Number, 'h2', 'primary');
+							table_data += createP(element.Theme, 'h6', 'info');
+							table_data += '<div class="d-none d-xl-block d-lg-block">';
+							table_data += createP(element.Subtheme, 'h6', 'info');
+							table_data += createP(element.Name, 'h6', 'success');
+							table_data += createP(element.Year, '', 'warning');
+							table_data += '</div>';
+							table_data += '</td><td>';
+							table_data += createImg('https://images.brickset.com/sets/AdditionalImages/' + element.Number + '-1/' + element.Number + '_alt1.jpg');
+							table_data += '</td><td class="d-none d-xl-block d-lg-block">';
+							table_data += createImg(element.ImageURL);
+							table_data += '</td></tr>';
+						});
+						table_data += '</table>';
+						$('#data').html(table_data);
+					}
+				});
+			});
+		</script>
 	</body>
 </html>
-
-<script>
-	$(document).ready(function(){
-		function toObject(arr) {
-			var jsonObj = [];
-			var headers = arr[0].split(',');
-			for(var i = 1; i < arr.length; i++) {
-				var data = arr[i].split(',');
-				var obj = {};
-				for(var j = 0; j < data.length; j++) {
-					obj[headers[j].trim()] = data[j].trim().split('"').join('');
-				}
-				jsonObj.push(obj);
-			}
-			return jsonObj
-		}
-		$.ajax({
-			url:"https://mikiwys.github.io/lego.wojtka/ownedby-mikiwys.csv",
-			dataType:"text",
-			success:function(data) {
-				var collection = toObject(data.split(/\r?\n|\r/));
-				var table_data = '<table class="table table-borderless" style="border-spacing:0 20px; border-collapse: separate;">';
-				collection.forEach(function(element) {
-					console.log(element);
-					table_data += '<tr class="bg-light"><td>';
-					table_data += '<p class="h1 btn btn-primary">' + element.Number + '</p>';
-					table_data += '<p class="h4 bg-info">' + element.Theme + '</p>'
-					table_data += '<p class="h5 bg-info">' + element.Subtheme + '</p>'
-					table_data += '<p class="h4 bg-success">' + element.Name + '</p>';
-					table_data += '<p class="h5 bg-warning">[' + element.Year + ']</p>';
-					table_data += '</td><td>';
-					table_data += '<img style="max-height: 200px; max-width: 400px;" src="' + element.ImageURL + '"\>';
-					table_data += '</td><td>';
-					var boxImg = 'https://images.brickset.com/sets/AdditionalImages/' + element.Number + '-1/' + element.Number + '_alt1.jpg'
-					table_data += '<img style="max-height: 200px; max-width: 400px;" src="' + boxImg + '"\>';
-					table_data += '</td></tr>';
-				});
-				table_data += '</table>';
-				$('#data').html(table_data);
-			}
-		});
-	});
-</script>
