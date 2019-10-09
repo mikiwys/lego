@@ -1,18 +1,25 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 	<head>
-		<title>lego.wojtka</title>
+		<meta charset="utf-8">
+		<title>lego.marysi.i.wojtka</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<style>
+			div .row {
+				margin-bottom: 20px;
+				padding: 20px;
+			}
+			img {
+				max-height: 200px;
+				max-width: 400px;
+			}
+		</style>
 	</head>
 	<body>
-		<div class="container">
-			<div class="row">
-				<div id="data"></div>
-			</div>
-		</div>
+		<div id="data" class="container"></div>
 		<script>
 			$(document).ready(function(){
 				function toObject(arr) {
@@ -36,32 +43,32 @@
 					return '<p class="btn btn-' + style + '" style="margin: 0 5px 5px 0"><span class="' + sizeClass + '">' + text + '</span></p>';
 				}
 				function createImg(imageUrl) {
-					return '<img style="max-height: 200px; max-width: 400px;" src="' + imageUrl + '"\>';
+					return '<img src="' + imageUrl + '"\>';
 				}
 				$.ajax({
-					url:"https://mikiwys.github.io/lego.wojtka/ownedby-mikiwys.csv",
-					dataType:"text",
-					success:function(data) {
+					url: "https://mikiwys.github.io/lego/ownedby-mikiwys.csv",
+					dataType: "text",
+					success: function(data) {
 						var collection = toObject(data.split(/\r?\n|\r/));
-						var table_data = '<table class="table table-borderless" style="border-spacing:0 20px; border-collapse: separate;">';
+						var data = '';
 						collection.forEach(function(element) {
-							console.log(element);
-							table_data += '<tr class="bg-light"><td>';
-							table_data += createP(element.Number, 'h2', 'primary');
-							table_data += createP(element.Theme, 'h6', 'info');
-							table_data += '<div class="d-none d-xl-block d-lg-block">';
-							table_data += createP(element.Subtheme, 'h6', 'info');
-							table_data += createP(element.Name, 'h6', 'success');
-							table_data += createP(element.Year, '', 'warning');
-							table_data += '</div>';
-							table_data += '</td><td>';
-							table_data += createImg('https://images.brickset.com/sets/AdditionalImages/' + element.Number + '-1/' + element.Number + '_alt1.jpg');
-							table_data += '</td><td class="d-none d-xl-block d-lg-block">';
-							table_data += createImg(element.ImageURL);
-							table_data += '</td></tr>';
+							data += '<div class="row bg-light rounded-lg">';
+								data += '<div class="col">'
+									data += createP(element.Number, 'h2', 'primary');
+									data += createP(element.Theme, 'h6', 'info');
+									data += createP(element.Subtheme, 'h6', 'info');
+									data += createP(element.Name, 'h6', 'success');
+									data += createP(element.Year, '', 'warning');
+								data += '</div>';
+								data += '<div class="col">'
+									data += createImg('https://images.brickset.com/sets/AdditionalImages/' + element.Number + '-1/' + element.Number + '_alt1.jpg');
+								data += '</div>';
+								data += '<div class="col d-none d-lg-block">'
+									data += createImg(element.ImageURL);
+								data += '</div>';
+							data += '</div>';
 						});
-						table_data += '</table>';
-						$('#data').html(table_data);
+						$('#data').html(data);
 					}
 				});
 			});
