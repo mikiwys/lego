@@ -19,7 +19,8 @@
 		</style>
 	</head>
 	<body>
-		<div id="data" class="container"></div>
+		<div id="legoCollection" class="container"></div>
+		<div id="bgCollection" class="container"></div>
 		<script>
 			$(document).ready(function(){
 				function toObject(arr) {
@@ -38,38 +39,51 @@
 					}
 					return jsonObj
 				}
-				function createP(text, sizeClass, style) {
-					if (text === '') { return ''; }
-					return '<p class="btn btn-' + style + '" style="margin: 0 5px 5px 0"><span class="' + sizeClass + '">' + text + '</span></p>';
+				function createP(content, sizeClass, style) {
+					if (content === '') { return ''; }
+					return '<p class="btn btn-' + style + '" style="margin: 0 5px 5px 0px"><span class="' + sizeClass + '">' + content/*.toString().split(":")[0]*/ + '</span></p><br />';
 				}
 				function createImg(imageUrl) {
-					return '<img src="' + imageUrl + '"\>';
+					return '<img src="' + imageUrl + '" style="margin: 0 25px 5px 0px; display: none;" onload="this.style.display=\'\'"\>';
 				}
 				$.ajax({
 					url: "https://mikiwys.github.io/lego/ownedby-mikiwys.csv",
 					dataType: "text",
-					success: function(data) {
-						var collection = toObject(data.split(/\r?\n|\r/));
+					success: function(result) {
+						var collection = toObject(result.split(/\r?\n|\r/));
 						var data = '';
 						collection.forEach(function(element) {
 							data += '<div class="row bg-light rounded-lg">';
-								data += '<div class="col">'
+								data += '<div class="col-1"/>'
+								data += '<div class="col-2">'
 									data += createP(element.Number, 'h2', 'primary');
 									data += createP(element.Theme, 'h6', 'info');
-									data += createP(element.Subtheme, 'h6', 'info');
-									data += createP(element.Name, 'h6', 'success');
 									data += createP(element.Year, '', 'warning');
 								data += '</div>';
-								data += '<div class="col">'
+								data += '<div class=col>'
 									data += createImg('https://images.brickset.com/sets/AdditionalImages/' + element.Number + '-1/' + element.Number + '_alt1.jpg');
-								data += '</div>';
-								data += '<div class="col d-none d-lg-block">'
 									data += createImg(element.ImageURL);
 								data += '</div>';
 							data += '</div>';
 						});
-						$('#data').html(data);
+						$('#legoCollection').html(data);
 					}
+				});
+				$.getJSON("https://bgg-json.azurewebsites.net/collection/mw70499?grouped=true", function(result) {
+					var data = '';
+					result.forEach(function(element) {
+						data += '<div class="row bg-light rounded-lg">';
+							data += '<div class="col-1"/>'
+							data += '<div class="col-2">'
+								data += createP(element.name, 'h4', 'primary');
+								data += createP(element.yearPublished, '', 'warning');
+							data += '</div>';
+							data += '<div class=col>'
+								data += createImg(element.image);
+							data += '</div>';
+						data += '</div>';
+					});
+					$('#bgCollection').html(data);
 				});
 			});
 		</script>
