@@ -44,7 +44,7 @@
         data += '</div>';
         return data;
       }
-      $.getJSON("https://cors-anywhere.herokuapp.com/https://brickset.com/api/v3.asmx/getSets?apiKey=3-YCp4-JWjC-jxe27&userHash=<lt@UuJNKt&params={'owned':1}", function(result) {
+      $.getJSON("https://cors-anywhere.herokuapp.com/https://brickset.com/api/v3.asmx/getSets?apiKey=3-YCp4-JWjC-jxe27&userHash=<lt@UuJNKt&params={'pageSize':100,'owned':1}", function(result) {
         var data = '';
         result.sets.forEach(function(element) {
           data += createRow(
