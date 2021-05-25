@@ -45,7 +45,7 @@
         return data;
       }
       // Fixing the CORS error by hosting your own proxy on Heroku [https://dev.to/imiebogodson/fixing-the-cors-error-by-hosting-your-own-proxy-on-heroku-3lcb]
-      $.getJSON("https://shielded-reef-87793.herokuapp.com/https://brickset.com/api/v3.asmx/getSets?apiKey=3-YCp4-JWjC-jxe27&userHash=<lt@UuJNKt&params={'pageSize':100,'owned':1}", function(result) {
+      $.getJSON("https://shielded-reef-87793.herokuapp.com/https://brickset.com/api/v3.asmx/getSets?apiKey=3-YCp4-JWjC-jxe27&userHash=<lt@UuJNKt&params={'pageSize':200,'owned':1}", function(result) {
         var data = '';
         result.sets.forEach(function(element) {
           data += createRow(
