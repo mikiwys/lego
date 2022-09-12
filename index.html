@@ -30,13 +30,12 @@
 
       function createRow(details, images) {
         var data = '<div class="row bg-light rounded-lg">';
-        data += '<div class="col-1"/>';
-        data += '<div class="col-2">';
+        data += '<div>';
         details.forEach(function(detail) {
           data += detail;
         });
         data += '</div>';
-        data += '<div class=col>';
+        data += '<div>';
         images.forEach(function(image) {
           data += image;
         });
