@@ -1,66 +1,27 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>lego.marysi.i.wojtka</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<head>
+  <meta charset="utf-8">
+  <title>lego.marysi.i.wojtka</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
     <style>
-      div .row { margin-bottom: 20px; padding: 20px; }
-      img { max-height: 200px; max-width: 400px; }
-    </style>
-  </head>
-  <body>
-    <div id="legoCollection" class="container"></div>
-    <div id="bgCollection" class="container"></div>
-    <script>
-    $(document).ready(function() {
-      function createP(content, sizeClass, style) {
-        if (content === '') {
-          return '';
-        }
-        return '<p class="btn btn-' + style + '" style="margin: 0 5px 5px 0px"><span class="' + sizeClass + '">' + content /*.toString().split(":")[0]*/ + '</span></p><br />';
-      }
-
-      function createImg(imageUrl) {
-        return '<img src="' + imageUrl + '" style="margin: 0 25px 5px 0px; display: none;" onload="this.style.display=\'\'"\>';
-      }
-
-      function createRow(details, images) {
-        var data = '<div class="row bg-light rounded-lg">';
-        data += '<div>';
-        details.forEach(function(detail) {
-          data += detail;
-        });
-        data += '</div>';
-        data += '<div>';
-        images.forEach(function(image) {
-          data += image;
-        });
-        data += '</div>';
-        data += '</div>';
-        return data;
-      }
-      // Fixing the CORS error by hosting your own proxy on Heroku [https://dev.to/imiebogodson/fixing-the-cors-error-by-hosting-your-own-proxy-on-heroku-3lcb]
-      $.getJSON("https://shielded-reef-87793.herokuapp.com/https://brickset.com/api/v3.asmx/getSets?apiKey=3-YCp4-JWjC-jxe27&userHash=<lt@UuJNKt&params={'pageSize':200,'owned':1}", function(result) {
-        var data = '';
-        result.sets.forEach(function(element) {
-          data += createRow(
-            [createP(element.number, 'h2', 'primary'), createP(element.theme, 'h6', 'info'), createP(element.year, '', 'warning')], [createImg('https://images.brickset.com/sets/AdditionalImages/' + element.number + '-1/' + element.number + '_alt1.jpg'), createImg(element.image.imageURL)]);
-        });
-        $('#legoCollection').html(data);
-      });
-      $.getJSON("https://bgg-json.azurewebsites.net/collection/mw70499?grouped=true", function(result) {
-        var data = '';
-        result.forEach(function(element) {
-          data += createRow(
-            [createP(element.name, 'h4', 'primary'), createP(element.yearPublished, '', 'warning')], [createImg(element.image)]);
-        });
-        $('#bgCollection').html(data);
-      });
-    });
-    </script>
-  </body>
+			div .row {
+				margin-bottom: 20px;
+				padding: 20px;
+			}
+			img {
+				max-height: 200px;
+				max-width: 400px;
+			}
+		</style>
+</head>
+<body>
+<div id="legoCollection" class="container"></div>
+<!-- TODO add adjustments for div structure -->
+<!-- TODO fix errors in browser console -->
+</body>
 </html>
